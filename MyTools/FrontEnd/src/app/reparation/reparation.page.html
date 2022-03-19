@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true">
+  <div class="body">
+    <div class="circleBase type2 circle1"></div>
+    <div class="circleBase type1"></div>
+
+    <ion-label class="welcomeMessage">
+          <ion-img width="80" height="80" src="/assets/logo/Chris.png"></ion-img>
+          <ion-back-button></ion-back-button>
+    </ion-label>
+
+    <form id=formId (ngSubmit)="reparationForm(reparation)" #reparation="ngForm">
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+
+        <input class="ion-margin-vertical"
+          value="photo" name="photo" (change)="view($event)" type="file" #photo="ngModel"  accept="image/jpeg"  #photos  placeholder="Photo de l'Appareil" ngModel/>
+
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="hammer-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="besoinDuService" type="text" placeholder="Description du Probléme" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="pencil-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="libelle" type="text" placeholder="Libelle" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Catégorie</ion-label>
+          <ion-select ngModel="produits" name="produits">
+            <ion-select-option value="ORDINATEUR">Ordinateur</ion-select-option>
+            <ion-select-option value="TELEPHONE">Téléphone</ion-select-option>
+            <ion-select-option value="TABLETTE">Tablette</ion-select-option>
+            <ion-select-option value="TELEVISEUR">Télévision</ion-select-option>
+            <ion-select-option value="IMPRIMANTE">Imprimante</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-row class="ion-margin-vertical">
+
+        </ion-row>
+        <ion-button color="#107B97" type="submit" value="soumettre"  shape="round">Soumettre</ion-button>
+      </ion-list>
+    </form>
+  </div>
+  <div class="image">
+    <ion-img src="/assets/logo/Chris.png"></ion-img>
+  </div>
+  </ion-content>

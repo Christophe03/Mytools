@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button class="recherche">
+        <ion-icon name="search-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <h1 class="title" *ngIf="loginData.profils == 'CLIENT'">Atelier</h1>
+  <div *ngIf="loginData.profils == 'CLIENT'">
+    <ion-card mode="ios" *ngFor="let l of liste">
+      <ion-card-content>
+        <div class="item-img">
+          <ion-img src="{{this.url+l.id}}"></ion-img>
+        </div>
+        <div class="item-info">
+          <p>{{l.nomAtelier}}</p>
+          <p>{{l.domaineActivite}}</p>
+          <p>{{l.contacts}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <h1 class="title" *ngIf="loginData.profils == 'GERANT' || loginData.profils =='TECHNICIEN'">Techniciens</h1>
+  <div *ngIf="loginData.profils == 'GERANT' || loginData.profils =='TECHNICIEN'">
+  <ion-card mode="ios" *ngFor="let l of lis">
+    <ion-card-content>
+      <div class="item-img">
+        <ion-img src="/assets/icon/technicien.png"></ion-img>
+      </div>
+      <div class="item-info">
+        <p>{{l.nom}}</p>
+        <p>{{l.prenom}}</p>
+        <p>{{l.domaineActivite}}</p>
+        <p>{{l.contact}}</p>
+      </div>
+
+      <ion-buttons slot="end">
+        <ion-button class="recherche" (click)="modification(l)">
+          <ion-icon name="pencil-outline" color="dark"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+
+  </ion-card>
+  </div>
+
+</ion-content>
+

@@ -1,0 +1,8 @@
+{
+  "name": "MyToolsFront",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

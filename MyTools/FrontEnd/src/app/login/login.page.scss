@@ -1,0 +1,115 @@
+
+@import "~@ionic/angular/css/core.css";
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.circleBase {
+    border-radius: 50%;
+  }
+  .body{
+    background-color: #49ABC1;
+    background-position: cover;
+  }
+
+  .type1 {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(90deg, #d4d4d4 0%, #d4d4d4 100%);opacity: 0.3;
+    box-shadow: 0px 1px 10px #000000;
+
+    top: -50px;
+    left: -50px;
+  }
+
+  .type2 {
+    width: 100px;
+    height: 100px;
+    background:90deg, #f0efef;
+  }
+
+  .circle2 {
+    position: absolute;
+    top: 150px;
+    left: -20px;
+  }
+
+  .welcomeMessage {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    width:200px;
+    height:200px;
+  }
+
+  .error {
+    font-size: 0.75rem;
+  }
+::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none;
+  overflow: hidden;
+}
+
+ion-content {
+  overflow: hidden;
+  --overflow: hidden;
+}
+
+.scroll-content {
+  overflow: hidden;
+}
+
+ion-list {
+  background: transparent;
+  transform: translateY(20vh);
+  ion-item {
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+  }
+  ion-row {
+    margin-bottom: 5vh;
+  }
+  ion-button {
+    width: 30vh;
+    margin: auto;
+  }
+  .alignItems {
+    ion-checkbox, ion-note {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    ion-checkbox {
+      margin-right: 1vw;
+      --size: 1.1rem;
+    }
+  }
+  .signup {
+    margin-top: 5vh;
+    font-size: 0.8rem;
+  }
+
+  ion-col {
+    ion-note {
+      font-size: 0.95rem;
+      color: #ffffff;
+    }
+  }
+}
+ion-button{
+  background-color: #107B97;
+  border-radius: 100px;
+}
+.image{
+  width: 200px;
+  height: 200px;
+  opacity: 0.3;
+}

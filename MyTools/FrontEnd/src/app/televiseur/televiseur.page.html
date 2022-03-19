@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+
+      <img src="../../assets/products/prod-1.png" alt="">
+
+    </ion-buttons>
+
+    <ion-buttons slot="end" class="notification">
+
+        <ion-icon name="notifications-outline" routerLink="/notification" color="dark"></ion-icon>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="title">Televiseur</h1>
+
+  <div class="order-items">
+    <ion-card mode="ios" *ngFor="let l of liste">
+        <div class="item-img">
+          <ion-img *ngIf="l.etat === 'ACTIVER'" src='{{this.url+l.id}}' (click)="settings(l)"></ion-img>
+        </div>
+        <div class="item-info">
+          <p *ngIf="l.etat === 'ACTIVER'">{{l.nom}}</p>
+          <p *ngIf="l.etat === 'ACTIVER'">{{l.caracteristique}}</p>
+          <p *ngIf="l.etat === 'ACTIVER'">{{l.prix}}</p>
+
+          <ion-button expand="block" color="#107B97" class="main-button">Commander</ion-button>
+        </div>
+    </ion-card>
+
+  </div>
+</ion-content>

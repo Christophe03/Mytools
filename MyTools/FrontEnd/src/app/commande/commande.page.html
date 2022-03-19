@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="fermer()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="passer(form)">
+    <ion-item>
+      <ion-input disabled value="{{info.nom}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input disabled value="{{info.caracteristique}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input disabled value="{{info.prix}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="quantite" placeholder="La Quantité" ngModel></ion-input>
+    </ion-item>
+    <ion-button type="submit">Valider</ion-button>
+
+  </form>
+
+</ion-content>

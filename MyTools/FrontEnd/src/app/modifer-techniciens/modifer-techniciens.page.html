@@ -1,0 +1,80 @@
+<ion-content [fullscreen]="true">
+  <div class="body">
+    <div class="circleBase type2 circle1"></div>
+    <div class="circleBase type1"></div>
+
+    <ion-label class="welcomeMessage">
+          <ion-img width="80" height="80" src="/assets/logo/Chris.png"></ion-img>
+          <ion-back-button></ion-back-button>
+    </ion-label>
+
+    <form (ngSubmit)="modifier()">
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  name="person-outline" slot="end" color="medium">  </ion-icon>
+          <ion-input name="nom" [(ngModel)]="info.nom" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  name="person-outline" slot="end" color="medium">  </ion-icon>
+          <ion-input name="prenom" [(ngModel)]="info.prenom" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="contacts" type="number" [(ngModel)]="info.contact" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="people-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="genre" [(ngModel)]="info.genre" ngModel required>
+          </ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="location-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="Adresse" type="texte"  ngModel required>
+          </ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="ribbon-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="domaineActivite"  placeholder="Domaine d'Activiter" [(ngModel)]="info.domaineActivite" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="at-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="email" [(ngModel)]="info.email" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  slot="end" name="lock-closed-outline" color="medium">  </ion-icon>
+          <ion-input type="password" name="password" [(ngModel)]="info.password" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  slot="end" name="lock-closed-outline" color="medium">  </ion-icon>
+          <ion-input type="password" placeholder="Confirmer mot de passe" [(ngModel)]="confirmer" ngModel required>
+          </ion-input>
+        </ion-item>
+
+
+        <ion-row class="ion-margin-vertical">
+
+        </ion-row>
+        <ion-button color="#107B97" type="submit" value="valider" shape="round">Valider</ion-button>
+      </ion-list>
+    </form>
+  </div>
+  <ion-row class="ion-margin-vertical">
+
+  </ion-row>
+  <div class="image">
+    <ion-img src="/assets/logo/Chris.png"></ion-img>
+  </div>
+  </ion-content>

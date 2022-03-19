@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+  <div class="body">
+    <div class="circleBase type2 circle1"></div>
+    <div class="circleBase type1"></div>
+
+    <ion-label class="welcomeMessage">
+          <ion-img width="80" height="80" src="/assets/logo/Chris.png"></ion-img>
+          <ion-back-button></ion-back-button>
+    </ion-label>
+
+    <form id=formId (ngSubmit)="articleForm(ajout)" #ajout="ngForm">
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+        <ion-item>
+          <ion-label>Type article</ion-label>
+          <ion-select value="articleType" interface="action-sheet" cancelText="Annuler" name="articleType" ngModel [(ngModel)]="articleType" required>
+            <ion-select-option value="APPAREIL">Appareil</ion-select-option>
+            <ion-select-option value="ACCESSOIRES">Accessoire</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+          <input class="ion-margin-vertical"
+          value="photo" name="photo" (change)="view($event)" type="file" #photo="ngModel"  accept="image/jpeg"  #photos  placeholder="Image de l'article" ngModel *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'"/>
+          <!-- </ion-input> -->
+
+
+        <ion-item class="ion-margin-vertical" *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
+          <ion-icon name="bag-handle-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="nom" placeholder="nom de l'article" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical" *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
+          <ion-icon name="pencil-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="caracteristique" placeholder="caracteristique" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical" *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
+          <ion-icon name="cash-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="prix" type="number" placeholder="50000" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
+          <ion-label>Catégorie</ion-label>
+          <ion-select ngModel="produits" name="produits">
+            <ion-select-option value="ORDINATEUR">Ordinateur</ion-select-option>
+            <ion-select-option value="TELEPHONE">Téléphone</ion-select-option>
+            <ion-select-option value="TABLETTE">Tablette</ion-select-option>
+            <ion-select-option value="TELEVISEUR">Télévision</ion-select-option>
+            <ion-select-option value="IMPRIMANTE">Imprimante</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-row class="ion-margin-vertical">
+
+        </ion-row>
+        <ion-button color="#107B97" type="submit" value="enregistrer" *ngIf="articleType" shape="round">Enregistrer</ion-button>
+      </ion-list>
+    </form>
+  </div>
+  <div class="image">
+    <ion-img src="/assets/logo/Chris.png"></ion-img>
+  </div>
+  </ion-content>
