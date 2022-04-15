@@ -1,5 +1,5 @@
 package com.example.MyTools.model;
 
-public enum etat {
+public enum Etat {
     ACTIVER, DESACTIVER
 }

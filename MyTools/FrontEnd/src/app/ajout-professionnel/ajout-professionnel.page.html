@@ -1,0 +1,71 @@
+<ion-content [fullscreen]="true">
+  <div>
+    <div class="circleBase type2 circle1"></div>
+    <div class="circleBase type1"></div>
+
+    <ion-label class="welcomeMessage" routerLink="/login">
+          <ion-img src="/assets/logo/Chris1.png"></ion-img>
+    </ion-label>
+
+
+    <form id=formId (ngSubmit)="ajoutTechnicien(ajout)" #ajout="ngForm">
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  name="person-outline" slot="end" color="medium">  </ion-icon>
+          <ion-input name="nom" placeholder="Votre nom" minlength="2" maxlength="50" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  name="person-outline" slot="end" color="medium">  </ion-icon>
+          <ion-input name="prenom" placeholder="Votre prenom" minlength="3" maxlength="200" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="contact" type="text" minlength="8" maxlength="8" pattern="[0-9]+" placeholder="Numéro de téléphone" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="people-outline" slot="end" color="medium"></ion-icon>
+          <ion-select value="genre" name="genre" ngModel required>
+            <ion-select-option value="HOMME">Homme</ion-select-option>
+            <ion-select-option value="FEMME">Femme</ion-select-option>
+          </ion-select>
+          <label>Genre</label>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="location-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="Adresse" type="adresse" minlength="3" maxlength="50"  placeholder="Votre adresse" ngModel required>
+          </ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="ribbon-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="domaineActivite" placeholder="Domaine d'Activiter" minlength="5" maxlength="100" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="at-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="email" placeholder="Votre adresse Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon  slot="end" name="lock-closed-outline" color="medium">  </ion-icon>
+          <ion-input type="password" name="password" minlength="6" maxlength="16" placeholder="Mot de passe"  ngModel required>
+          </ion-input>
+        </ion-item>
+
+
+        <ion-row class="ion-margin-vertical">
+
+        </ion-row>
+        <ion-button color="#107B97" type="submit" value="s'inscrire" shape="round">Ajouter</ion-button>
+      </ion-list>
+    </form>
+  </div>
+  </ion-content>

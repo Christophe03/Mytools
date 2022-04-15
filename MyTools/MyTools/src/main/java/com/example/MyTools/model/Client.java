@@ -1,5 +1,6 @@
 package com.example.MyTools.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
+
 public class Client extends AbstractEntity{
 
     private String nom;
@@ -34,21 +35,20 @@ public class Client extends AbstractEntity{
     @Enumerated (EnumType.STRING)
     private Profils profils = Profils.CLIENT;
     @Enumerated (EnumType.STRING)
-    private etat Etat = etat.ACTIVER;
+    private Etat etat = Etat.ACTIVER;
 
     @OneToMany
     private List<Appareil> appareil;
 
-    @OneToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "client")
     private List<Services> services;
 
     @OneToMany
     private List<RendezVous> rendezVous;
 
 
-
-
-    public Client(String nom, String prenom, String contacts, Adresse adresse, String typeAppareil, String serviceSollicite, String email, String password, String genre, Profils profils, etat etat) {
+    public Client(String nom, String prenom, String contacts, Adresse adresse, String typeAppareil, String serviceSollicite, String email, String password, String genre, Profils profils, Etat etat, List<Appareil> appareil, List<Services> services, List<RendezVous> rendezVous) {
         this.nom = nom;
         this.prenom = prenom;
         this.contacts = contacts;
@@ -59,7 +59,10 @@ public class Client extends AbstractEntity{
         this.password = password;
         this.genre = genre;
         this.profils = profils;
-        Etat = etat;
+        this.etat = etat;
+        this.appareil = appareil;
+        this.services = services;
+        this.rendezVous = rendezVous;
     }
 
     public String getNom() {
@@ -134,13 +137,20 @@ public class Client extends AbstractEntity{
         this.genre = genre;
     }
 
-
-    public etat getEtat() {
-        return Etat;
+    public Profils getProfils() {
+        return profils;
     }
 
-    public void setEtat(etat etat) {
-        Etat = etat;
+    public void setProfils(Profils profils) {
+        this.profils = profils;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     public List<Appareil> getAppareil() {
@@ -159,11 +169,11 @@ public class Client extends AbstractEntity{
         this.services = services;
     }
 
-    public Profils getProfils() {
-        return profils;
+    public List<RendezVous> getRendezVous() {
+        return rendezVous;
     }
 
-    public void setProfils(Profils profils) {
-        this.profils = profils;
+    public void setRendezVous(List<RendezVous> rendezVous) {
+        this.rendezVous = rendezVous;
     }
 }

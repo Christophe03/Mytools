@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="#107B97">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+
+      <img src="../../assets/products/prod-1.png" alt="">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let l of messagers" class="message">
+    <ion-card-header>
+      {{l.atelier.nomAtelier}}
+      <p>Contact: {{l.atelier.contacts}}</p>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Rendez-Vous:  {{l.dateSaisi}}</p>
+      <p>Heure: {{l.heureSaisi}}</p>
+      <p>Récuperation: {{l.dateRendu}}</p>
+      <p>Heure: {{l.heureRendu}}</p>
+      <p>Montant: {{l.montant}} FCFA</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

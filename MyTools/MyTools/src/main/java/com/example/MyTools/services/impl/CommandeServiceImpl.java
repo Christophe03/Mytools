@@ -1,5 +1,6 @@
 package com.example.MyTools.services.impl;
 
+import com.example.MyTools.model.Client;
 import com.example.MyTools.model.Commandes;
 import com.example.MyTools.repository.CommandesRepository;
 import com.example.MyTools.services.CommandesServices;
@@ -31,5 +32,10 @@ public class CommandeServiceImpl implements CommandesServices {
     @Override
     public Commandes afficherCommandeById(Integer id) {
         return this.commandesRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Commandes> commandeClient(Client app) {
+        return this.commandesRepository.findAllByClient(app);
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServivesAppareilsService } from '../mesServives/servives-appareils.service';
 import { FormBuilder, NgForm, FormsModule } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.page.html',
@@ -17,7 +18,7 @@ export class InscriptionPage implements OnInit {
   photo: any=[];
   atelier: any;
 
-  constructor( public service: ServivesAppareilsService, private toastController: ToastController) { }
+  constructor( public service: ServivesAppareilsService,private router: Router, private toastController: ToastController) { }
 
   ngOnInit() {
   }
@@ -33,34 +34,38 @@ export class InscriptionPage implements OnInit {
       return this.service.addAtelier(ajout.value).subscribe(data =>{
         console.log(data);
         this.atelier = data;
-
-        this.service.imageAtelier(this.atelier.id, this.photo).subscribe(donner =>{
-          console.log(donner);
-        });
+        this.ajoute();
+        ajout.reset(this.router.navigateByUrl('/login'));
         if(!data){
           console.log('email existe déja');
           this.refuse();
+
         }
-        this.ajoute();
-        ajout.reset();
+
+        this.service.imageAtelier(this.atelier.id, this.photo).subscribe(donner =>{
+          console.log(donner);
+
+        });
+
       });
     }
     if(b.profils==='CLIENT'){
       return this.service.addClient(ajout.value).subscribe(data=>{
         console.log(data);
+        this.ajoute();
+        ajout.reset(this.router.navigateByUrl('/login'));
         if(!data){
           console.log('email existe déja');
           this.refuse();
         }
-        this.ajoute();
-        ajout.reset();
       });
+
     }
   }
   async ajoute(){
     const toast = await this.toastController.create({
       message: 'Compte Créé avec Success.',
-      color: 'success',
+      color: 'primary',
       duration: 3000
     });
     toast.present();

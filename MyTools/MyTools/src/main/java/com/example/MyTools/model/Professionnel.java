@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
+
 public class Professionnel extends AbstractEntity{
 
     private String nom;
@@ -34,7 +34,7 @@ public class Professionnel extends AbstractEntity{
     private Profils profils = Profils.TECHNICIEN;
 
     @Enumerated (EnumType.STRING)
-    private etat Etat = etat.ACTIVER;
+    private Etat etat = Etat.ACTIVER;
 
 
     @OneToMany
@@ -50,7 +50,7 @@ public class Professionnel extends AbstractEntity{
     private List<RendezVous> rendezVous;
 
 
-    public Professionnel(String nom, String prenom, String contact, String email, String domaineActivite, String password, Adresse adresse, String genre, Profils profils, etat etat) {
+    public Professionnel(String nom, String prenom, String contact, String email, String domaineActivite, String password, Adresse adresse, String genre, Profils profils, Etat etat, List<Action> action, Atelier atelier, SuperAdmin superAdmin, List<RendezVous> rendezVous) {
         this.nom = nom;
         this.prenom = prenom;
         this.contact = contact;
@@ -60,7 +60,11 @@ public class Professionnel extends AbstractEntity{
         this.adresse = adresse;
         this.genre = genre;
         this.profils = profils;
-        Etat = etat;
+        this.etat = etat;
+        this.action = action;
+        this.atelier = atelier;
+        this.superAdmin = superAdmin;
+        this.rendezVous = rendezVous;
     }
 
     public String getNom() {
@@ -135,12 +139,12 @@ public class Professionnel extends AbstractEntity{
         this.profils = profils;
     }
 
-    public etat getEtat() {
-        return Etat;
+    public Etat getEtat() {
+        return etat;
     }
 
-    public void setEtat(etat etat) {
-        Etat = etat;
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     public List<Action> getAction() {

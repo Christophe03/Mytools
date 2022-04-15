@@ -15,6 +15,7 @@ export class AppareilPage implements OnInit {
   loginData: any;
   liste: any;
   url= 'http://localhost:8080/mytools/appareil/photo/';
+  // url= 'https://mesoutiels.herokuapp.com/mytools/appareil/photo/';
   constructor(private servive: ServivesAppareilsService, private model: ModalController) { }
 
   async settings(data: any) {

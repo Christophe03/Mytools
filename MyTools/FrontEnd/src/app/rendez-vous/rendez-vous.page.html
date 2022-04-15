@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="#107B97">
+    <ion-buttons slot="end">
+      <ion-button (click)="fermer()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="donner(form)">
+    <ion-item>
+      <ion-input name="dateSaisi" type="date" placeholder="Date de rendez-vous" ngModel></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="heureSaisi" type="time" placeholder="Heure du rendez-vous" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input name="dateRendu" type="date" placeholder="Date de récuperation" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input name="heureRendu" type="time" placeholder="Heure de récuperation" ngModel></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input name="montant" minlength="2" maxlength="10" pattern="[0-9]+" placeholder="Montant" ngModel></ion-input>
+    </ion-item>
+    <ion-card-content class="rdv">
+      <ion-buttons>
+        <ion-button type="submit">Confirmer le Rendez-vous</ion-button>
+      </ion-buttons>
+    </ion-card-content>
+
+
+  </form>
+
+</ion-content>

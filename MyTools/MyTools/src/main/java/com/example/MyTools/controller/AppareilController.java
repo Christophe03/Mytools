@@ -1,13 +1,9 @@
 package com.example.MyTools.controller;
 
-import com.example.MyTools.model.Appareil;
-import com.example.MyTools.model.Photo;
-import com.example.MyTools.model.Produits;
-import com.example.MyTools.model.Profils;
+import com.example.MyTools.model.*;
 import com.example.MyTools.services.AppreilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +14,7 @@ import java.util.List;
 @RequestMapping("/mytools/appareil")
 @CrossOrigin("*")
 public class AppareilController {
+
     @Autowired
     AppreilService appreilService;
 
@@ -41,6 +38,10 @@ public class AppareilController {
     public List<Appareil>appareilType(@PathVariable("ord") Produits ord){
         return this.appreilService.appareilType(ord);
     }
+    @GetMapping("/AppareilAtelier/{id}")
+    public List<Appareil>appareilAtelier(@PathVariable("id")Atelier app){
+        return  this.appreilService.appareilAteler(app);
+    }
 
     @GetMapping(value="/photo/{id}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.ALL_VALUE})
     byte[] getPhoto(@PathVariable Integer id) throws IOException{
@@ -59,5 +60,18 @@ public class AppareilController {
     public String supprimerAppareil(@PathVariable("id") Integer id){
         this.appreilService.supprimerAppareil(id);
         return "Appareil Supprimer avec Success";
+    }
+
+    @GetMapping("corebeille")
+    public List<Appareil> List(){
+        return appreilService.listeCorbeille();
+    }
+    @GetMapping("supprimer/{id}")
+    public void supprimer(@PathVariable Integer id){
+        appreilService.supprimer(id);
+    }
+    @GetMapping("/restore/{id}")
+    public void restore(@PathVariable Integer id){
+        appreilService.restore(id);
     }
 }

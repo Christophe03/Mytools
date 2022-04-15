@@ -8,8 +8,11 @@ import { ModalController } from '@ionic/angular';
 })
 export class InfosPage implements OnInit {
   loginData: any;
+  info: any;
 
   url= 'http://localhost:8080/mytools/appareil/photo/';
+
+  // url= 'https://mesoutiels.herokuapp.com/mytools/appareil/photo/';
   constructor(private model: ModalController) { }
 
   ngOnInit() {

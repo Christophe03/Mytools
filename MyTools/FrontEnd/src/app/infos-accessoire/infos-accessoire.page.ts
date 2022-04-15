@@ -7,8 +7,10 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./infos-accessoire.page.scss'],
 })
 export class InfosAccessoirePage implements OnInit {
+  // url1='https://mesoutiels.herokuapp.com/mytools/accessoire/photo/';
   url1='http://localhost:8080/mytools/accessoire/photo/';
   loginData: any;
+  information: any;
 
   constructor(private model: ModalController) { }
 

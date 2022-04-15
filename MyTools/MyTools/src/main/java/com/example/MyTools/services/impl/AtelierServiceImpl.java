@@ -112,4 +112,25 @@ public class AtelierServiceImpl implements AtelierService {
         Path path = Paths.get(file.toURI());
         return  Files.readAllBytes(path);
     }
+
+    @Override
+    public List<Atelier> listeCorbeille() {
+        return atelierRepository.findByEtat(Etat.DESACTIVER);
+    }
+
+    @Override
+    public void supprimer(Integer id) {
+        Atelier atelier = atelierRepository.findById(id).get();
+        atelier.setEtat(Etat.DESACTIVER);
+        atelierRepository.save(atelier);
+
+    }
+
+    @Override
+    public void restore(Integer id) {
+        Atelier atelier = atelierRepository.findById(id).get();
+        atelier.setEtat(Etat.ACTIVER);
+        atelierRepository.save(atelier);
+
+    }
 }

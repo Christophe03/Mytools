@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="#107B97">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+
+      <img src="../../assets/products/prod-1.png" alt="">
+
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let l of liste">
+    <ion-list *ngIf="l.appareils">
+      <ion-item>Appareil: {{l?.appareils?.nom}}</ion-item>
+      <ion-item>Prix: {{l?.appareils?.prix}}</ion-item>
+      <ion-item>Quantité: {{l?.quantite}}</ion-item>
+      <ion-item>Montant: {{l?.montant}}</ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card *ngFor="let l of liste">
+    <ion-list *ngIf="l.accessoires">
+      <ion-item>Accessoire: {{l?.accessoires?.nom}}</ion-item>
+      <ion-item>Prix: </ion-item>
+      <ion-item>Quantité: {{l?.quantite}}</ion-item>
+      <ion-item>Montant: {{l?.montant}}</ion-item>
+    </ion-list>
+</ion-card>
+
+</ion-content>

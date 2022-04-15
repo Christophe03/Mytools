@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="#107B97">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
 
@@ -29,7 +29,7 @@
           <p *ngIf="l.etat === 'ACTIVER'">{{l.caracteristique}}</p>
           <p *ngIf="l.etat === 'ACTIVER'">{{l.prix}}</p>
 
-          <ion-button expand="block" color="#107B97" class="main-button">Commander</ion-button>
+          <ion-button expand="block" color="#107B97" class="main-button" (click)="commande(l)">Commander</ion-button>
         </div>
     </ion-card>
   </div>

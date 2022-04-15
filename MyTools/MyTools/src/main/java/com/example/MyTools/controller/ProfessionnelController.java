@@ -1,5 +1,6 @@
 package com.example.MyTools.controller;
 
+import com.example.MyTools.model.Atelier;
 import com.example.MyTools.model.Professionnel;
 import com.example.MyTools.services.ProfessionnelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class ProfessionnelController {
     public String ajouterPersonne (@RequestBody Professionnel professionnel, @PathVariable Integer id){
         this.professionnelService.ajouterPersonne(professionnel, id);
         return "Ajouter avec success";
+    }
+
+    @GetMapping("/professionnel/{id}")
+    public List<Professionnel>professionnelAtelier(@PathVariable("id")Atelier app){
+        return this.professionnelService.professionnelAteler(app);
     }
     @GetMapping("/lister")
     public List<Professionnel> afficherListPersonne() {

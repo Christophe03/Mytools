@@ -13,8 +13,6 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-
 
 public class Appareil extends AbstractEntity{
     private String nom;
@@ -24,11 +22,8 @@ public class Appareil extends AbstractEntity{
     @Enumerated (EnumType.STRING)
     private ArticleType articleType = ArticleType.APPAREIL;
     @Enumerated (EnumType.STRING)
-    private etat Etat = etat.ACTIVER;
+    private Etat etat = Etat.ACTIVER;
     private Produits produits;
-    @OneToMany
-    @JsonIgnore
-    private List<Accessoires> accessoires;
     @OneToOne
     @JsonIgnore
     @JoinColumn(name="idclient", referencedColumnName = "id")
@@ -41,14 +36,18 @@ public class Appareil extends AbstractEntity{
     @OneToOne
     private Professionnel professionnel;
 
-    public Appareil(String nom, String photo, BigDecimal prix, String caracteristique, ArticleType articleType, etat etat, Produits produits) {
+    public Appareil(String nom, String photo, BigDecimal prix, String caracteristique, ArticleType articleType, Etat etat, Produits produits, Client client, List<Commandes> commandes, Atelier atelier, Professionnel professionnel) {
         this.nom = nom;
         this.photo = photo;
         this.prix = prix;
         this.caracteristique = caracteristique;
         this.articleType = articleType;
-        Etat = etat;
+        this.etat = etat;
         this.produits = produits;
+        this.client = client;
+        this.commandes = commandes;
+        this.atelier = atelier;
+        this.professionnel = professionnel;
     }
 
     public String getNom() {
@@ -83,21 +82,20 @@ public class Appareil extends AbstractEntity{
         this.caracteristique = caracteristique;
     }
 
-
-    public Client getClient() {
-        return client;
+    public ArticleType getArticleType() {
+        return articleType;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setArticleType(ArticleType articleType) {
+        this.articleType = articleType;
     }
 
-    public etat getEtat() {
-        return Etat;
+    public Etat getEtat() {
+        return etat;
     }
 
-    public void setEtat(etat etat) {
-        Etat = etat;
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     public Produits getProduits() {
@@ -108,28 +106,20 @@ public class Appareil extends AbstractEntity{
         this.produits = produits;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public List<Commandes> getCommandes() {
         return commandes;
     }
 
     public void setCommandes(List<Commandes> commandes) {
         this.commandes = commandes;
-    }
-
-    public List<Accessoires> getAccessoires() {
-        return accessoires;
-    }
-
-    public void setAccessoires(List<Accessoires> accessoires) {
-        this.accessoires = accessoires;
-    }
-
-    public ArticleType getArticleType() {
-        return articleType;
-    }
-
-    public void setArticleType(ArticleType articleType) {
-        this.articleType = articleType;
     }
 
     public Atelier getAtelier() {

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="#107B97">
     <ion-buttons slot="end">
       <ion-button class="recherche">
         <ion-icon name="search-outline" color="dark"></ion-icon>
@@ -43,11 +43,18 @@
         <ion-button class="recherche" (click)="modification(l)">
           <ion-icon name="pencil-outline" color="dark"></ion-icon>
         </ion-button>
+        <ion-button slot="end" color="danger" (click)="presentAlertConfirm(l)">
+          <ion-icon name="trash-bin-outline"></ion-icon>
+        </ion-button>
       </ion-buttons>
     </ion-card-content>
-
   </ion-card>
   </div>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="loginData.profils == 'GERANT'">
+    <ion-fab-button color="primary" routerLink="/ajout-professionnel">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 

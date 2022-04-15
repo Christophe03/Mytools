@@ -53,4 +53,16 @@ public class AtelierController {
     public Atelier connexion(@PathVariable("email") String email, @PathVariable("password") String password){
         return atelierService.connexion(email, password);
     }
+    @GetMapping("/corbeille")
+    public List<Atelier> list(){
+        return atelierService.listeCorbeille();
+    }
+    @PutMapping("/supprimer/{id}")
+    public void supprimer(@PathVariable Integer id){
+        atelierService.supprimer(id);
+    }
+    @PutMapping("/restore/{id}")
+    public void restore(@PathVariable Integer id){
+        atelierService.restore(id);
+    }
 }

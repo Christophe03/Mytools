@@ -1,5 +1,15 @@
-.ion-card-list {
-  ion-item {
-      opacity: 0.5;
+.rdv{
+  ion-buttons{
+    ion-button{
+      background-color:#107B97;
+      color: rgb(255, 255, 255);
+      margin: 5px;
+      text-align: center;
+      font-size: 12px;
+      border-radius: 10px;
+    }
   }
+}
+ion-toolbar{
+  background-color: #107B97;
 }

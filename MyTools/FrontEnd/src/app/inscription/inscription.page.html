@@ -1,12 +1,12 @@
 <ion-content [fullscreen]="true">
-<div class="body">
+<div>
   <div class="circleBase type2 circle1"></div>
   <div class="circleBase type1"></div>
 
-  <ion-label class="welcomeMessage">
-        <ion-img width="80" height="80" src="/assets/logo/Chris.png"></ion-img>
-        <ion-back-button></ion-back-button>
+  <ion-label class="welcomeMessage" routerLink="/login">
+        <ion-img src="/assets/logo/Chris1.png"></ion-img>
   </ion-label>
+
 
   <form id=formId (ngSubmit)="inscriptionForm(ajout)" #ajout="ngForm">
     <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
@@ -23,59 +23,62 @@
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='GERANT'">
         <ion-icon name="storefront-outline" slot="end" color="medium"></ion-icon>
-        <ion-input name="nomAtelier" placeholder="Nom de l'Atelier" ngModel required>
+        <ion-input name="nomAtelier" placeholder="Nom de l'Atelier" minlength="2" maxlength="100" ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon  name="person-outline" slot="end" color="medium">  </ion-icon>
-        <ion-input name="nom" placeholder="Votre nom" ngModel required>
+        <ion-input name="nom" placeholder="Votre nom" minlength="2" maxlength="50" ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon  name="person-outline" slot="end" color="medium">  </ion-icon>
-        <ion-input name="prenom" placeholder="Votre prenom" ngModel required>
+        <ion-input name="prenom" placeholder="Votre prenom" minlength="3" maxlength="200" ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
-        <ion-input name="contacts" type="number" placeholder="contacts" ngModel required>
+        <ion-input name="contacts" type="text" minlength="8" maxlength="8" pattern="[0-9]+" placeholder="Numéro de téléphone" pattern="[0-9]+" ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon name="people-outline" slot="end" color="medium"></ion-icon>
-        <ion-input name="genre" placeholder="Genre" ngModel required>
-        </ion-input>
+          <ion-select value="genre" name="genre" ngModel required>
+            <ion-select-option value="HOMME">Homme</ion-select-option>
+            <ion-select-option value="FEMME">Femme</ion-select-option>
+          </ion-select>
+          <label>Genre</label>
       </ion-item>
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon name="location-outline" slot="end" color="medium"></ion-icon>
-        <ion-input name="Adresse" type="adresse" placeholder="Votre adresse" ngModel required>
+        <ion-input name="Adresse" type="adresse" minlength="3" maxlength="50" placeholder="Votre adresse" ngModel required>
         </ion-input>
       </ion-item>
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='GERANT'">
         <ion-icon name="ribbon-outline" slot="end" color="medium"></ion-icon>
-        <ion-input name="domaineActivite" placeholder="Domaine d'Activiter" ngModel required>
+        <ion-input name="domaineActivite" minlength="5" maxlength="100" placeholder="Domaine d'Activiter" ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon name="at-outline" slot="end" color="medium"></ion-icon>
-        <ion-input name="email" placeholder="Votre adresse Email" ngModel required>
+        <ion-input name="email" placeholder="Votre adresse Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon  slot="end" name="lock-closed-outline" color="medium">  </ion-icon>
-        <ion-input type="password" name="password" placeholder="Mot de passe"  ngModel required>
+        <ion-input type="password" name="password" minlength="6" maxlength="16" placeholder="Mot de passe"  ngModel required>
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-vertical" *ngIf="profils ==='CLIENT' || profils ==='GERANT'">
         <ion-icon  slot="end" name="lock-closed-outline" color="medium">  </ion-icon>
-        <ion-input type="password" placeholder="Confirmer mot de passe" [(ngModel)]="confirmer" required>
+        <ion-input type="password" placeholder="Confirmer mot de passe" minlength="6" maxlength="16" [(ngModel)]="confirmer" required>
         </ion-input>
       </ion-item>
 
@@ -87,10 +90,5 @@
     </ion-list>
   </form>
 </div>
-<ion-row class="ion-margin-vertical">
 
-</ion-row>
-<div class="image">
-  <ion-img src="/assets/logo/Chris.png"></ion-img>
-</div>
 </ion-content>

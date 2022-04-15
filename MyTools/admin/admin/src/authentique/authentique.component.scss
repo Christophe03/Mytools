@@ -1,0 +1,36 @@
+#appContainer{
+    height: 100%;
+    width: 90%;
+    background-image: linear-gradient(to right , #107B97 0%, #fff 100%);
+    
+    
+}
+
+#cardStyle{
+    background-color: rgb(255,255,255);
+    box-shadow: 5px 3px 10px 5px gray;
+    padding: auto;
+}
+
+img.cones{
+
+    position :absolute;
+    width: 70%;
+    height: 70%;
+    right: 100%; 
+    top: 10px;;
+    }
+    img.icones{
+        position :absolute;
+        width: 50%;
+        height: 50%;
+        left: 130%; 
+        top: 30px;
+    }
+
+    
+    h1{
+        text-align: center;
+        margin-top: 10px;
+    }
+  

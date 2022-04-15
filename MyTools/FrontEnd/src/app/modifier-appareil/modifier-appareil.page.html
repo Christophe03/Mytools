@@ -1,9 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>modifierAppareil</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <div>
+    <div class="circleBase type2 circle1"></div>
+    <div class="circleBase type1"></div>
 
-<ion-content>
+    <ion-label class="welcomeMessage">
+          <ion-img width="80" height="80" src="/assets/logo/Chris.png"></ion-img>
+          <ion-back-button></ion-back-button>
+    </ion-label>
 
-</ion-content>
+    <form>
+      <ion-list lines="none" class="ion-margin ion-padding ion-text-center">
+
+          <input class="ion-margin-vertical"
+          value="photo" name="photo" (change)="view($event)" type="file" #photo="ngModel"  accept="image/jpeg"  #photos  placeholder="Image de l'article" ngModel/>
+          <!-- </ion-input> -->
+
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="bag-handle-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="nom" placeholder="nom de l'article" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="pencil-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="caracteristique" placeholder="caracteristique" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="cash-outline" slot="end" color="medium"></ion-icon>
+          <ion-input name="prix" type="number" placeholder="50000" ngModel required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Catégorie</ion-label>
+          <ion-select ngModel="produits" name="produits">
+            <ion-select-option value="ORDINATEUR">Ordinateur</ion-select-option>
+            <ion-select-option value="TELEPHONE">Téléphone</ion-select-option>
+            <ion-select-option value="TABLETTE">Tablette</ion-select-option>
+            <ion-select-option value="TELEVISEUR">Télévision</ion-select-option>
+            <ion-select-option value="IMPRIMANTE">Imprimante</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-row class="ion-margin-vertical">
+
+        </ion-row>
+        <ion-button color="#107B97" type="submit" value="enregistrer" shape="round">Enregistrer</ion-button>
+      </ion-list>
+    </form>
+  </div>
+  </ion-content>

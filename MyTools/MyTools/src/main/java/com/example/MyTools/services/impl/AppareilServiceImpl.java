@@ -77,7 +77,6 @@ public class AppareilServiceImpl implements AppreilService {
         appareilExistant.setCaracteristique(appareil.getCaracteristique());
         appareilExistant.setEtat(appareil.getEtat());
         appareilExistant.setPhoto(appareil.getPhoto());
-        appareilExistant.setAccessoires(appareil.getAccessoires());
         appareilExistant.setProduits(appareil.getProduits());
     }
 
@@ -98,5 +97,31 @@ public class AppareilServiceImpl implements AppreilService {
     @Override
     public List<Appareil> appareilType(Produits ord) {
         return this.appareilRepository.findByProduits(ord);
+    }
+
+    @Override
+    public List<Appareil> appareilAteler(Atelier app) {
+        return this.appareilRepository.findAllByAtelier(app);
+    }
+
+    @Override
+    public List<Appareil> listeCorbeille() {
+        return this.appareilRepository.findByEtat(Etat.DESACTIVER);
+    }
+
+    @Override
+    public void supprimer(Integer id) {
+        Appareil appareil = appareilRepository.findById(id).get();
+        appareil.setEtat(Etat.DESACTIVER);
+        appareilRepository.save(appareil);
+
+    }
+
+    @Override
+    public void restore(Integer id) {
+        Appareil appareil = appareilRepository.findById(id).get();
+        appareil.setEtat(Etat.ACTIVER);
+        appareilRepository.save(appareil);
+
     }
 }

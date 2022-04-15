@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -8,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilPage implements OnInit {
   loginData: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.loginData=JSON.parse(localStorage.getItem('isLogin'));
     console.log(this.loginData);
+  }
+  logOut(){
+    localStorage.removeItem('isLogin');
+    this.router.navigateByUrl('/login');
   }
 
 }

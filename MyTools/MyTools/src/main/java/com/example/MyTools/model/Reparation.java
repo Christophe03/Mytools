@@ -1,21 +1,15 @@
 package com.example.MyTools.model;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
 
 public class Reparation extends AbstractEntity{
 
@@ -23,15 +17,63 @@ public class Reparation extends AbstractEntity{
 
     private LocalDate dateDepot;
 
-    private Date dateRendu;
+    private LocalDate dateRendu;
 
-    @OneToMany
-    private List<Solution> solution;
+    @OneToOne
+    private Services services;
 
-    public Reparation(String nom, LocalDate dateDepot, Date dateRendu) {
+    @Enumerated(EnumType.STRING)
+    private com.example.MyTools.model.Etat Etat = com.example.MyTools.model.Etat.ACTIVER;
+
+    @OneToOne
+    private RendezVous rendezVous;
+
+    @OneToOne
+    private  Atelier atelier;
+
+    @OneToOne
+    private Professionnel professionnel;
+
+    public Reparation(String nom, LocalDate dateDepot, LocalDate dateRendu, Services services, RendezVous rendezVous, Atelier atelier, Professionnel professionnel) {
         this.nom = nom;
         this.dateDepot = dateDepot;
         this.dateRendu = dateRendu;
+        this.services = services;
+        this.rendezVous = rendezVous;
+        this.atelier = atelier;
+        this.professionnel = professionnel;
+    }
+
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
+    }
+
+    public RendezVous getRendezVous() {
+        return rendezVous;
+    }
+
+    public void setRendezVous(RendezVous rendezVous) {
+        this.rendezVous = rendezVous;
+    }
+
+    public Atelier getAtelier() {
+        return atelier;
+    }
+
+    public void setAtelier(Atelier atelier) {
+        this.atelier = atelier;
+    }
+
+    public Professionnel getProfessionnel() {
+        return professionnel;
+    }
+
+    public void setProfessionnel(Professionnel professionnel) {
+        this.professionnel = professionnel;
     }
 
     public String getNom() {
@@ -50,19 +92,19 @@ public class Reparation extends AbstractEntity{
         this.dateDepot = dateDepot;
     }
 
-    public Date getDateRendu() {
+    public LocalDate getDateRendu() {
         return dateRendu;
     }
 
-    public void setDateRendu(Date dateRendu) {
+    public void setDateRendu(LocalDate dateRendu) {
         this.dateRendu = dateRendu;
     }
 
-    public List<Solution> getSolution() {
-        return solution;
+    public com.example.MyTools.model.Etat getEtat() {
+        return Etat;
     }
 
-    public void setSolution(List<Solution> solution) {
-        this.solution = solution;
+    public void setEtat(com.example.MyTools.model.Etat etat) {
+        Etat = etat;
     }
 }

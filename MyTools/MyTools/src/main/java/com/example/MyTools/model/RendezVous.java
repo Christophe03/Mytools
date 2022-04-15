@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -17,8 +19,11 @@ import java.util.Date;
 @AllArgsConstructor
 public class RendezVous extends AbstractEntity{
 
-    private Date DateSaisi;
-    private Date DateRendu;
+    private LocalDate DateSaisi;
+    private LocalTime HeureSaisi;
+    private LocalDate DateRendu;
+    private LocalTime HeureRendu;
+
 
     private BigDecimal montant;
 
@@ -28,26 +33,50 @@ public class RendezVous extends AbstractEntity{
     @ManyToOne
     private Client client;
 
-    public RendezVous(Date dateSaisi, Date dateRendu, BigDecimal montant) {
-        this.DateSaisi = dateSaisi;
-        this.DateRendu = dateRendu;
+    @ManyToOne
+    private Atelier atelier;
+
+    @OneToOne
+    private Services services;
+
+    public RendezVous(LocalDate dateSaisi, LocalTime heureSaisi, LocalDate dateRendu, LocalTime heureRendu, BigDecimal montant) {
+        DateSaisi = dateSaisi;
+        HeureSaisi = heureSaisi;
+        DateRendu = dateRendu;
+        HeureRendu = heureRendu;
         this.montant = montant;
     }
 
-    public Date getDateSaisi() {
+    public LocalDate getDateSaisi() {
         return DateSaisi;
     }
 
-    public void setDateSaisi(Date dateSaisi) {
+    public void setDateSaisi(LocalDate dateSaisi) {
         DateSaisi = dateSaisi;
     }
 
-    public Date getDateRendu() {
+    public LocalDate getDateRendu() {
         return DateRendu;
     }
 
-    public void setDateRendu(Date dateRendu) {
+    public void setDateRendu(LocalDate dateRendu) {
         DateRendu = dateRendu;
+    }
+
+    public LocalTime getHeureSaisi() {
+        return HeureSaisi;
+    }
+
+    public void setHeureSaisi(LocalTime heureSaisi) {
+        HeureSaisi = heureSaisi;
+    }
+
+    public LocalTime getHeureRendu() {
+        return HeureRendu;
+    }
+
+    public void setHeureRendu(LocalTime heureRendu) {
+        HeureRendu = heureRendu;
     }
 
     public BigDecimal getMontant() {
@@ -64,5 +93,29 @@ public class RendezVous extends AbstractEntity{
 
     public void setProfessionnel(Professionnel professionnel) {
         this.professionnel = professionnel;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Atelier getAtelier() {
+        return atelier;
+    }
+
+    public void setAtelier(Atelier atelier) {
+        this.atelier = atelier;
+    }
+
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
     }
 }

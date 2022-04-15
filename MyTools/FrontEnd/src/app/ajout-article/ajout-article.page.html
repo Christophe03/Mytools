@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="body">
+  <div>
     <div class="circleBase type2 circle1"></div>
     <div class="circleBase type1"></div>
 
@@ -25,17 +25,17 @@
 
         <ion-item class="ion-margin-vertical" *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
           <ion-icon name="bag-handle-outline" slot="end" color="medium"></ion-icon>
-          <ion-input name="nom" placeholder="nom de l'article" ngModel required></ion-input>
+          <ion-input name="nom" placeholder="nom de l'article" minlength="2" maxlength="200" ngModel required></ion-input>
         </ion-item>
 
         <ion-item class="ion-margin-vertical" *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
           <ion-icon name="pencil-outline" slot="end" color="medium"></ion-icon>
-          <ion-input name="caracteristique" placeholder="caracteristique" ngModel required></ion-input>
+          <ion-input name="caracteristique" placeholder="caracteristique" minlength="5" maxlength="200" ngModel required></ion-input>
         </ion-item>
 
         <ion-item class="ion-margin-vertical" *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
           <ion-icon name="cash-outline" slot="end" color="medium"></ion-icon>
-          <ion-input name="prix" type="number" placeholder="50000" ngModel required></ion-input>
+          <ion-input name="prix" type="number" placeholder="50000" minlength="2" maxlength="7" pattern="[0-9]+" ngModel required></ion-input>
         </ion-item>
 
         <ion-item *ngIf="articleType ==='APPAREIL' || articleType ==='ACCESSOIRES'">
@@ -56,8 +56,5 @@
         <ion-button color="#107B97" type="submit" value="enregistrer" *ngIf="articleType" shape="round">Enregistrer</ion-button>
       </ion-list>
     </form>
-  </div>
-  <div class="image">
-    <ion-img src="/assets/logo/Chris.png"></ion-img>
   </div>
   </ion-content>

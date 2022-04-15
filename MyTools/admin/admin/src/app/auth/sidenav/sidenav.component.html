@@ -1,0 +1,20 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="assets/Chris1.png" alt="Logo" />
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2"></h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['dashboard']">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item [routerLink]="['atelier']"> <mat-icon>domain</mat-icon> Atelier </a>
+  <a mat-list-item [routerLink]="['appareil']"> <mat-icon>smartphone</mat-icon> Appareils </a>
+  <a mat-list-item [routerLink]="['accessoire']"> <mat-icon>phonelink_setup</mat-icon> Accessoires </a>
+  <a mat-list-item [routerLink]="['vente']"> <mat-icon>add_shopping_cart</mat-icon> Ventes </a>
+  <!-- <a mat-list-item [routerLink]="['commande']"> <mat-icon>shopping_cart</mat-icon> Commandes </a> -->
+  <!-- <a mat-list-item [routerLink]="['bilan']"> <mat-icon>euro_symbol</mat-icon> Bilan </a> -->
+  <!-- <a mat-list-item [routerLink]="['statistique']"> <mat-icon>trending_up</mat-icon> Statistiques </a> -->
+  <a mat-list-item [routerLink]="['corbeille']"> <mat-icon>delete</mat-icon> Corbeille </a> 
+  
+</mat-nav-list>

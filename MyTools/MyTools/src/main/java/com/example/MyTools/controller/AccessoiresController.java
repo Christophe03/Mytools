@@ -2,6 +2,7 @@ package com.example.MyTools.controller;
 
 import com.example.MyTools.model.Accessoires;
 import com.example.MyTools.model.Appareil;
+import com.example.MyTools.model.Atelier;
 import com.example.MyTools.model.Profils;
 import com.example.MyTools.services.AccessoiresService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class AccessoiresController {
         return accessoiresService.recupPhoto(id);
     }
 
+    @GetMapping("/AccessoireAtelier/{id}")
+    public List<Accessoires>accessoiresList(@PathVariable("id")Atelier app){
+        return this.accessoiresService.accessoireAteler(app);
+    }
+
     @GetMapping("/lister")
     public List<Accessoires> ListeAccessoires() {
         return  this.accessoiresService.ListeAccessoires();
@@ -56,6 +62,18 @@ public class AccessoiresController {
     public String supprimerAccessoires(@PathVariable("id") Integer id){
         this.accessoiresService.supprimerAccessoires(id);
         return "Effacer avec Success";
+    }
+    @GetMapping("corebeille")
+    public List<Accessoires> List(){
+        return accessoiresService.listeCobeille();
+    }
+    @GetMapping("supprimer/{id}")
+    public void supprimer(@PathVariable Integer id){
+        accessoiresService.supprimer(id);
+    }
+    @GetMapping("/restore/{id}")
+    public void restore(@PathVariable Integer id){
+        accessoiresService.restore(id);
     }
 
 }

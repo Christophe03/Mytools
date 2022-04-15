@@ -5,7 +5,7 @@ import com.example.MyTools.model.RendezVous;
 import java.util.List;
 
 public interface RendezVousService {
-    RendezVous ajouterRendezVous(RendezVous rendezVous);
+    RendezVous ajouterRendezVous(RendezVous rendezVous, Integer id);
     List<RendezVous> afficherRendezVous();
     String supprimer(Integer id);
     void modifierRendezVous(RendezVous rendezVous, Integer id);

@@ -16,9 +16,9 @@ public class RendezVousController {
     @Autowired
     RendezVousService rendezVousService;
 
-    @PostMapping("/ajouter")
-    public String ajouterRendezVous(@RequestBody RendezVous rendezVous) {
-        this.rendezVousService.ajouterRendezVous(rendezVous);
+    @PostMapping("/ajouter/{id}")
+    public String ajouterRendezVous(@RequestBody RendezVous rendezVous, @PathVariable Integer id) {
+        this.rendezVousService.ajouterRendezVous(rendezVous, id);
         return "Prise de rendez-vous effectuer";
     }
 

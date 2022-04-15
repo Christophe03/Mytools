@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
+
 public class Atelier extends AbstractEntity{
 
     private String nomAtelier;
@@ -35,7 +35,7 @@ public class Atelier extends AbstractEntity{
 
     private String genre;
     @Enumerated (EnumType.STRING)
-    private etat Etat = etat.ACTIVER;
+    private Etat etat = Etat.ACTIVER;
     @ManyToOne
     private Professionnel professionnel;
     @OneToOne
@@ -49,7 +49,7 @@ public class Atelier extends AbstractEntity{
     private List<Notification> notifications;
 
 
-    public Atelier(String nomAtelier, String nom, String prenom, Adresse adresse, String contacts, String email, String domaineActivite, String password, Profils profils, String photo, String genre, etat etat) {
+    public Atelier(String nomAtelier, String nom, String prenom, Adresse adresse, String contacts, String email, String domaineActivite, String password, Profils profils, String photo, String genre, Etat etat, Professionnel professionnel, SuperAdmin superAdmin, List<Appareil> appareils, List<Accessoires> accessoires, List<Notification> notifications) {
         this.nomAtelier = nomAtelier;
         this.nom = nom;
         this.prenom = prenom;
@@ -61,7 +61,12 @@ public class Atelier extends AbstractEntity{
         this.profils = profils;
         this.photo = photo;
         this.genre = genre;
-        Etat = etat;
+        this.etat = etat;
+        this.professionnel = professionnel;
+        this.superAdmin = superAdmin;
+        this.appareils = appareils;
+        this.accessoires = accessoires;
+        this.notifications = notifications;
     }
 
     public String getNomAtelier() {
@@ -104,6 +109,14 @@ public class Atelier extends AbstractEntity{
         this.contacts = contacts;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getDomaineActivite() {
         return domaineActivite;
     }
@@ -128,6 +141,14 @@ public class Atelier extends AbstractEntity{
         this.profils = profils;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public String getGenre() {
         return genre;
     }
@@ -136,12 +157,12 @@ public class Atelier extends AbstractEntity{
         this.genre = genre;
     }
 
-    public etat getEtat() {
-        return Etat;
+    public Etat getEtat() {
+        return etat;
     }
 
-    public void setEtat(etat etat) {
-        Etat = etat;
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     public Professionnel getProfessionnel() {
@@ -160,14 +181,6 @@ public class Atelier extends AbstractEntity{
         this.superAdmin = superAdmin;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public List<Appareil> getAppareils() {
         return appareils;
     }
@@ -184,11 +197,11 @@ public class Atelier extends AbstractEntity{
         this.accessoires = accessoires;
     }
 
-    public String getPhoto() {
-        return photo;
+    public List<Notification> getNotifications() {
+        return notifications;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
     }
 }

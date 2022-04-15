@@ -1,0 +1,145 @@
+<!-- <table class="table table-striped"> -->
+<!-- <thead> -->
+    <div #parent></div>
+<div class="table-scrollable " id="example4" *ngIf="mode==1">
+    
+    <a class="btn btn-sm btn-success mb-2" (click)="test()">Ajouter</a>
+    <h2 style="text-align: center;"><strong>Liste des accessoires</strong> </h2> <br>
+    <table class="table table-hover table-checkable order-column full-width">
+        <thead>
+            <tr class="a">
+            
+                <th class="center">Id</th>
+                <th class="center"> Produits </th>
+                <th class="center"> caracteristique </th>
+                <th class="center"> Nom </th>
+
+                <th class="action"> Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="odd gradeX" *ngFor="let item of list" >
+                
+                <td class="center ">{{item.id}}</td>
+                <td class="center ">{{item.produits}}</td>
+                <td class="center ">{{item.caracteristique}}</td>
+                <td class="center ">{{item.nom}}</td>
+
+
+
+                <td class="center ">
+                    <i class=" fa fa-edit " aria-hidden="true" (click)="toEdit(item.id)"></i>
+                    <i class="fa fa-trash fat" aria-hidden="true" (click)="deleteitem(item.id)"></i>
+                    <i class=" fa fa-info-circle " aria-hidden="true" (click)="toDetail(item.id)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<!-- page ajouter -->
+<div class="table-scrollable" id="example4" *ngIf="mode==2">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+
+
+    <form #f="ngForm" (ngSubmit)="saveAcc(f)">
+        <div class="form-group">
+
+           
+
+            <label for="accessoires">Atelier_id</label>
+            <input type="text" name="atelier_id" (ngModel)="atelier_id" class="form-control" id="atelier-id"
+                placeholder="Atelier_id" required>
+
+            <label for="accessoires">Produits</label>
+            <select type="text" name="produits" (ngModel)="produits" class="form-control" id="Produit"
+                placeholder="Produits" required>
+                <option value="ORDINATEUR" style="color:black"> 1</option>
+                <option value="TELEPHONE" style="color:black">2</option>
+                <option value="TABLETTE" style="color:black">3</option>
+            </select>
+
+            <label for="accessoires">Caracteristique</label>
+            <input type="text" name="caracteristique" (ngModel)="caracteristique" class="form-control"
+                id="caracteristique" placeholder="Caracteristique" required>
+
+            <label for="accessoires">Nom</label>
+            <input type="text" name="nom" (ngModel)="nom" class="form-control" id="nom" placeholder="Nom" required>
+
+            <label for="accessoires">Prix</label>
+            <input type="text" name="prix" (ngModel)="prix" class="form-control" id="Prix" placeholder="Montant"
+                required>
+
+            <label for="accessoires">article_type</label>
+            <input type="text" name="article_type" (ngModel)="article_type" class="form-control" id="Article"
+                placeholder="Article" required>
+
+
+
+            <button type="submit" id="add-accessoire" class="btn btn-primary">Ajouter</button>
+
+
+        </div>
+    </form>
+</div>
+<!-- page detatil -->
+<div class="table-scrollable" id="example4" *ngIf="mode==4">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+    <h2 style="text-align: center;"><strong>Page Details</strong> </h2> <br>
+
+    <form #abba="ngForm" (ngSubmit)="savemodif(abba)">
+        <div class="form-group">
+
+            <label for="appareils">Produit</label>
+    <select type="text" name="produits" [(ngModel)]="getAcce.produits" #produits="ngModel" class="form-control"
+        id="produits" placeholder="produits" required>
+
+        <option value="ORDINATEUR" style="color:black">ORDINATEUR</option>
+        <option value="TELEPHONE" style="color:black">TELEPHONE</option>
+        <option value="TABLETTE" style="color:black">TABLETTE</option>
+    </select>
+            <label for="accessoires">Caracteristique</label>
+            <input type="text" name="caracteristique" disabled [(ngModel)]="getAcce.caracteristique" #caracteristique="ngModel"
+                class="form-control" id="caracteristique" placeholder="Caracteristique" required>
+
+            <label for="accessoires">Nom</label>
+            <input type="text" name="nom" disabled [(ngModel)]="getAcce.nom" #nom="ngModel" class="form-control"
+                id="Nom" placeholder="Nom" required>
+
+
+        </div>
+    </form>
+
+
+</div>
+<!-- page modifier -->
+<div class="table-scrollable" id="example4" *ngIf="mode==3">
+    <a class="btn btn-sm btn-primary mb-2"  (click)="test1()"  >Retour</a>
+    <h2 style="text-align: center;"><strong>Pages modifier</strong> </h2> <br>
+
+    <form #abba="ngForm" (ngSubmit)="savemodif(abba)">
+        <div class="form-group">
+
+            <label for="appareils">Produit</label>
+            <select type="text" name="produits" [(ngModel)]="getAcce.produits" #produits="ngModel" class="form-control"
+                id="Produits" placeholder="Produits" required>
+        
+                <option value="ORDINATEUR" style="color:black">ORDINATEUR</option>
+                <option value="TELEPHONE" style="color:black">TELEPHONE</option>
+                <option value="TABLETTE" style="color:black">TABLETTE</option>
+            </select>
+            <label for="accessoires">Caracteristique</label>
+            <input type="text" name="caracteristique" [(ngModel)]="getAcce.caracteristique" #caracteristique="ngModel"
+                class="form-control" id="caracteristique" placeholder="Caracteristique" required>
+
+            <label for="accessoires">Nom</label>
+            <input type="text" name="nom" [(ngModel)]="getAcce.nom" #nom="ngModel" class="form-control"
+                id="Nom" placeholder="Nom" required>
+
+
+            <button type="submit" id="add-accessoire" class="btn btn-primary">Modifier</button>
+
+
+        </div>
+    </form>
+</div>

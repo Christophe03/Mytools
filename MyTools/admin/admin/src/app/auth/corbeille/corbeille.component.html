@@ -1,0 +1,32 @@
+<div class="table-scrollable" id="example4" >
+    <h2 style="text-align: center;"><strong>Corbeille</strong> </h2> <br>
+    <table class="table table-hover table-checkable order-column full-width">
+        <thead>
+            <tr class="a">
+                
+               
+                <th class="center">Email</th>
+                <th class="center"> Nom </th>
+                <th class="center"> Nom atelier </th>
+                <th class="center"> Contact</th>
+
+                <th class="action"> Action </th>
+            </tr>
+        </thead>
+        <tbody class="odd gradeX" *ngFor="let item of list">
+            <tr *ngIf=" item.etat==='DESACTIVER' ">
+               
+                <td class="center ">{{item.email}}</td>
+                <td class="center ">{{item.nom}} {{item.prenom}}</td>
+                <td class="center ">{{item.nomAtelier}}</td>
+                <td class="center ">{{item.contacts}}</td>
+
+                        <td class="center ">
+                            <span class="material-icons" (click)="restore(item.id)" >restore</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </div>
+       

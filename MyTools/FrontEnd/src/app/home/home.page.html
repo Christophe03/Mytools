@@ -1,12 +1,15 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="#107B97">
     <ion-buttons slot="end">
       <ion-button class="notification" routerLink="/service-reparation" *ngIf="loginData.profils == 'GERANT' || loginData.profils =='TECHNICIEN'">
-        <span>{{nbreNotfication}}</span>
-        <ion-icon name="notifications-outline" color="dark"></ion-icon>
+        <div>
+          <span>{{nbreNotfication}}</span>
+        </div>
+        <ion-icon name="notifications-outline" color="light"></ion-icon>
       </ion-button>
-      <ion-button class="filter" *ngIf="loginData.profils == 'CLIENT'">
-        <ion-icon name="mail-outline" color="dark"></ion-icon>
+      <ion-button class="filter" routerLink="/message" *ngIf="loginData.profils == 'CLIENT'">
+        <span>{{nbrMessage}}</span>
+        <ion-icon name="mail-outline" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -22,7 +25,7 @@
 
   <div class="title ion-padding">
     <h2>Categories</h2>
-    <p routerLink="/categories">Voir tous</p>
+    <p routerLink="/categories">Tout</p>
   </div>
 
   <div class="category-slider ion-padding-start">
@@ -64,7 +67,7 @@
 
   <div class="title ion-padding">
     <h2 class="font-bold">Appareil</h2>
-    <p routerLink="/appareil">voir tous</p>
+    <p routerLink="/appareil">Tout</p>
   </div>
 
   <div class="product-slider ion-padding-start">
@@ -80,8 +83,8 @@
   </div>
 
   <div class="title ion-padding">
-    <h2 class="font-bold">Accessoires</h2>
-    <p routerLink="/accessoires">voir tous</p>
+    <h2 class="font-bold">Accessoire</h2>
+    <p routerLink="/accessoires">Tout</p>
   </div>
 
   <div class="product-slider ion-padding-start">
@@ -103,7 +106,7 @@
       <ion-fab-button color="light" routerLink="/ajout-article" *ngIf="loginData.profils == 'GERANT' || loginData.profils =='TECHNICIEN'">
         <ion-icon name="add-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="light" routerLink="/commande" *ngIf="loginData.profils == 'CLIENT'">
+      <ion-fab-button color="light" routerLink="/mes-commandes" *ngIf="loginData.profils == 'CLIENT'">
         <ion-icon name="cart-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-button color="light" routerLink="/reparation" *ngIf="loginData.profils == 'CLIENT'">

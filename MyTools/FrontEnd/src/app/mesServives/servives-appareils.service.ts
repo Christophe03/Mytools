@@ -6,17 +6,33 @@ import { identity, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServivesAppareilsService {
-
   APAREIL = 'http://localhost:8080/mytools/appareil';
   ACCESSOIRES = 'http://localhost:8080/mytools/accessoire';
   ATELIER = 'http://localhost:8080/mytools/atelier';
   CLIENT = 'http://localhost:8080/mytools/client';
   PROFESSIONNEL = 'http://localhost:8080/mytools/professionnel';
-  SERVICES = 'http://localhost:8080/mytools/service';
+  SERVICES = 'http://localhost:8080/mytools/services';
   COMMANDE = 'http://localhost:8080/mytools/commande';
   NOTIFICATION = 'http://localhost:8080/mytools/notification';
+  RENVEZVOUS  = 'http://localhost:8080/mytools/rendezVous';
+  MESSAGE = 'http://localhost:8080/mytools/messages';
+  REPARATION = 'http://localhost:8080/mytools/reparation';
+
+  // APAREIL = 'https://mesoutiels.herokuapp.com/mytools/appareil';
+  // ACCESSOIRES = 'https://mesoutiels.herokuapp.com/mytools/accessoire';
+  // ATELIER = 'https://mesoutiels.herokuapp.com/mytools/atelier';
+  // CLIENT = 'https://mesoutiels.herokuapp.com/mytools/client';
+  // PROFESSIONNEL = 'https://mesoutiels.herokuapp.com/mytools/professionnel';
+  // SERVICES = 'https://mesoutiels.herokuapp.com/mytools/service';
+  // COMMANDE = 'https://mesoutiels.herokuapp.com/mytools/commande';
+  // NOTIFICATION = 'https://mesoutiels.herokuapp.com/mytools/notification';
 
   constructor(private http: HttpClient) {}
+
+  //Ajouter Reparation
+  public addReparation(data){
+    return this.http.post(this.REPARATION+'/ajouter', data)
+  }
 
   //Connexion client
   public loginClient(email: String,password: String){
@@ -52,6 +68,10 @@ export class ServivesAppareilsService {
   public getTablette(){
     return this.http.get(this.APAREIL+'/ListeType/TABLETTE');
   }
+  //RENVEZVOUSListe
+  public getRendezVous(){
+    return this.http.get(this.RENVEZVOUS+'/lister');
+  }
 
   //Liste des Televiseurs
   public getTeleviseur(){
@@ -82,10 +102,24 @@ export class ServivesAppareilsService {
   public getAccessoireTeleviseur(){
     return this.http.get(this.ACCESSOIRES+'AccessoireTYpe/TELEVISEUR');
   }
+  //Lister des Demandes de Reparation
+  public getService(){
+    return this.http.get(this.SERVICES+'/lister');
+  }
 
   //Liste Accessoire pour Imprimante
   public getAccessoireImprimante(){
-    return this.http.get(this.ACCESSOIRES+'AccessoireTYpe/IMPRIMANTE');
+    return this.http.get(this.ACCESSOIRES+'/AccessoireTYpe/IMPRIMANTE');
+  }
+  //Liste Appareil Atelier
+  public getAppareilAtelier(id: any){
+    return this.http.get(this.APAREIL+'/AppareilAtelier/'+id);
+  }
+  public getAccessoireAtelier(id: any){
+    return this.http.get(this.ACCESSOIRES+'/AccessoireAtelier/'+id);
+  }
+  public  getCommandeClient(id: any){
+    return this.http.get(this.COMMANDE+'/commandeClient/'+id);
   }
 
   //Commande Ajout
@@ -106,6 +140,16 @@ export class ServivesAppareilsService {
   public addreparation(data, id: any){
     return this.http.post(this.SERVICES+'/ajouter/'+id, data);
   }
+
+  //RENVEZVOUS
+  public addRendezVous(data, id: any){
+    return this.http.post(this.RENVEZVOUS+'/ajouter/'+id, data, {responseType: 'text'});
+  }
+  //MessagesService
+  public getMessage(){
+    return this.http.get(this.MESSAGE+'/liste')
+  }
+
   //Icon notification
   public getMotification(){
     return this.http.get(this.NOTIFICATION+'/liste')
@@ -140,8 +184,8 @@ export class ServivesAppareilsService {
     }
 
   //ajouter un Proffessionnel
-    public addProfessionnel(data){
-      return this.http.post(this.PROFESSIONNEL+'/ajouter', data, {responseType: 'text'});
+    public addProfessionnel(id: any, data){
+      return this.http.post(this.PROFESSIONNEL+'/ajouter/'+id, data, {responseType: 'text'});
     }
 
   //ajouter un Atelier
@@ -208,5 +252,24 @@ export class ServivesAppareilsService {
     //Afficher les Atelier par id (info Atelier)
     public detailAtelers(id: any){
       return this.http.get(this.ATELIER+'/'+id);
+    }
+
+    //Afficher les  service par id (info Service)
+    public detailService(id: any){
+      return this.http.get(this.SERVICES+'/'+id);
+    }
+    //Supprimer Professionnel
+    public deleteProfesionnel(id: any){
+      return this.http.delete(this.PROFESSIONNEL+'/supprimer/'+id, {responseType: 'text'});
+    }
+    //Supprimer Appareil
+    public deleteAppareil(id: any){
+      return this.http.delete(this.APAREIL+'/supprimer/'+id, {responseType: 'text'});
+
+    }
+    //Supprimer Accessoire
+    public deleteAccessoire(id: any){
+      return this.http.delete(this.ACCESSOIRES=+'/supprimer/'+id, {responseType: 'text'})
+
     }
 }

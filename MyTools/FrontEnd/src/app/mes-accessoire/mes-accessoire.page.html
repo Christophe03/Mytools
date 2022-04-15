@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="#107B97">
+        <div class="article">
+          <ion-buttons>
+            <ion-button routerLink="/mes-article">
+              Appareil
+            </ion-button>
+            <ion-button routerLink="/mes-accessoire">
+              Accessoire
+            </ion-button>
+          </ion-buttons>
+        </div>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div>
+    <div>
+      <div class="order-items" *ngFor="let l of lister">
+        <ion-card mode="ios">
+            <div class="item-img">
+              <ion-img *ngIf="l?.etat === 'ACTIVER'" src="{{this.url+l?.id}}"></ion-img>
+            </div>
+
+            <div class="item-info">
+              <p *ngIf="l.etat === 'ACTIVER'">{{l?.nom}}</p>
+              <p *ngIf="l.etat === 'ACTIVER'">{{l?.caracteristique}}</p>
+              <p *ngIf="l.etat === 'ACTIVER'">{{l?.prix}}</p>
+              <ion-buttons>
+                <ion-button slot="start">
+                  <ion-icon name="pencil-outline" color="primary"></ion-icon>
+                </ion-button>
+                <ion-button slot="end" color="danger">
+                  <ion-icon name="trash-bin-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

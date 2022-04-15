@@ -8,15 +8,20 @@ import {Router} from '@angular/router';
   styleUrls: ['./bienvenu.page.scss'],
 })
 export class BienvenuPage implements OnInit {
+  loginData: any;
 
   constructor(public router: Router) {
-    setTimeout(()=>{
-      this.router.navigateByUrl('login');
-    },3000);
-   }
 
+  }
 
   ngOnInit() {
+    this.loginData = JSON.parse(localStorage.getItem('isLogin'));
+    console.log(this.loginData);
+    if (this.loginData != null){
+      this.router.navigateByUrl('/tabs');
+     }else{
+       this.router.navigateByUrl('login');
+     }3000;
   }
 
 }

@@ -1,0 +1,166 @@
+<div #parent></div>
+<div class="table-scrollable" id="example4" *ngIf="mode==1">
+    <a class="btn btn-sm btn-success mb-2" (click)="test()">Ajouter</a>
+    <h2 style="text-align: center;"><strong>Liste des ateliers</strong> </h2> <br>
+    <table class="table table-hover table-checkable order-column full-width">
+        <thead>
+            <tr class="a">
+               
+                <th class="center">Email</th>
+                <th class="center"> Nom </th>
+                <th class="center"> Nom atelier </th>
+                <th class="center"> Contact</th>
+               
+
+                <th class="action"> Action </th>
+            </tr>
+        </thead>
+        <tbody class="odd gradeX" *ngFor="let item of list">
+            <tr *ngIf=" item.etat==='ACTIVER' ">
+            
+                
+                <td class="center ">{{item.email}}</td>
+                <td class="center ">{{item.nom}} {{item.prenom}}</td>
+                <td class="center ">{{item.nomAtelier}}</td>
+                <td class="center ">{{item.contacts}}</td>
+               
+
+
+
+                <td class="center ">
+                    <i class=" fa fa-edit " aria-hidden="true" (click)="toEdit(item.id)" ></i>
+                    <i class="fa fa-trash fat" aria-hidden="true" (click)="deleteitem(item.id)"></i>
+                    <i class=" fa fa-info-circle " aria-hidden="true" (click)="toDetail()"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<!-- page ajouter -->
+<div class="table-scrollable" id="example4" *ngIf="mode==2">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+
+
+    <form #f="ngForm" (ngSubmit)="saveAcc(f)">
+        <div class="form-group">
+
+         
+
+            <label for="email">Email</label>
+            <input type="email" name="email" (ngModel)="email" class="form-control" id="email" placeholder="Email" required>
+
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" (ngModel)="nom" class="form-control" id="nom" placeholder=" Nom" required>
+
+            <label for="nomAtelier">Nom atelier</label>
+            <input type="text" name="nomAtelier" (ngModel)="nomAtelier" class="form-control" id="nomAtelier"
+                placeholder="NomAtelier" required>
+
+            <label for="contacts">Contact</label>
+            <input type="text" name="contacts" (ngModel)="contacts" class="form-control" id="contacts"
+                placeholder="Contacts" required>
+
+
+            <button type="submit" id="add-accessoire" class="btn btn-primary">Ajouter</button>
+
+
+        </div>
+    </form>
+</div>
+<!-- Page detail -->
+<div class="table-scrollable" id="example4" *ngIf="mode==4">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+    <h2 style="text-align: center;"><strong>Page Details</strong> </h2> <br>
+   
+    <form #abba="ngForm" (ngSubmit)="saveAcc(abba)">
+        <div class="form-group">
+
+            <label for="atelier">Email</label>
+            <input type="text" name="email" disabled [(ngModel)]="getAcce.email" #nom="ngModel" class="form-control" id="email"
+                placeholder="Email" required>
+
+            
+            <label for="atelier">Nom</label>
+            <input type="text" name="nom" disabled [(ngModel)]="getAcce.nom" #nom="ngModel" class="form-control" id="nom"
+                placeholder="Nom" required>
+
+            <label for="atelier">Nom atelier</label>
+            <input type="text" name="nomAtelier" disabled [(ngModel)]="getAcce.nomAtelier" #nomAtelier="ngModel"
+                class="form-control" id="nomAtelier" placeholder="NomAtelier" required>
+
+            <label for="atelier">Contact</label>
+            <input type="text" name="contacts" disabled [(ngModel)]="getAcce.contacts" #contacts="ngModel" class="form-control"
+                id="contacts" placeholder="Contacts" required>
+
+
+        </div>
+    </form>
+
+</div>
+<!-- page modifier -->
+<div class="table-scrollable" id="example4" *ngIf="mode==3">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+    <h2 style="text-align: center;"><strong>Pages modifier</strong> </h2> <br>
+
+    <form #abba="ngForm" (ngSubmit)="savemodif(abba)">
+        <div class="form-group">
+            
+            <label for="atelier">Email</label>
+            <input type="text" name="email" [(ngModel)]="getAcce.email" #nom="ngModel" class="form-control" id="email"
+                placeholder="Email" required>
+
+                <label for="atelier">Nom</label>
+                <input type="text" name="nom" [(ngModel)]="getAcce.nom" #nom="ngModel" class="form-control" id="nom"
+                    placeholder="Nom" required>
+
+            <label for="atelier">Nom atelier</label>
+            <input type="text" name="nomAtelier" [(ngModel)]="getAcce.nomAtelier" #nomAtelier="ngModel"
+                class="form-control" id="nomAtelier" placeholder="NomAtelier" required>
+
+            <label for="atelier">Contact</label>
+            <input type="text" name="contacts" [(ngModel)]="getAcce.contacts" #contacts="ngModel" class="form-control"
+                id="contacts" placeholder="Contacts" required>
+
+                
+            <label for="atelier">Adresse</label>
+            <input type="text" name="adresse" [(ngModel)]="getAcce.adresse" #adresse="ngModel" class="form-control"
+                id="adresse" placeholder="Adresse" required>
+
+                
+            <label for="atelier">Domaine_activite</label>
+            <input type="text" name="domaineActivite" [(ngModel)]="getAcce.domaineActivite" #domaineActivite="ngModel" class="form-control"
+                id="domaineActivite" placeholder="Domaineactivite" required>
+
+                
+            <label for="atelier">Genre</label>
+            <input type="text" name="genre" [(ngModel)]="getAcce.genre" #genre="ngModel" class="form-control"
+                id="genre" placeholder="Genre" required>
+
+                
+            
+            <input type="text" name="password" style="display: none;" [(ngModel)]="getAcce.password" #password="ngModel" class="form-control"
+                id="password" placeholder="Password" required>
+
+                
+  
+            <input type="text" name="photo" style="display: none;" [(ngModel)]="getAcce.photo" #photo="ngModel" class="form-control"
+                id="photo" placeholder="Photo" required>
+
+                <input type="text" name="prenom" style="display: none;" [(ngModel)]="getAcce.prenom" #prenom="ngModel" class="form-control"
+                id="prenom" placeholder="prenom" required>
+
+                <input type="text" name="professionnel" style="display: none;" [(ngModel)]="getAcce.professionnel" #professionnel="ngModel" class="form-control"
+                id="professionnel" placeholder="Professionnel" required>
+
+                <input type="text" name="superAdmin" style="display: none;" [(ngModel)]="getAcce.superAdmin" #superAdmin="ngModel" class="form-control"
+                id="superAdmin" placeholder="SuperAdmin" required>
+
+                
+
+
+            <button type="submit" id="add-accessoire" class="btn btn-primary">Modifier</button>
+
+        </div>
+    </form>
+</div>

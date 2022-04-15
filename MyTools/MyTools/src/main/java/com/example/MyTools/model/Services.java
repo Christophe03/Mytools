@@ -26,9 +26,9 @@ public class Services extends AbstractEntity {
     @JsonIgnore
     private List<Solution> solution;
 
-    @OneToOne
-    @JsonIgnore
+    @ManyToOne
     private Client client;
+
     @OneToOne
     @JsonIgnore
     private Atelier atelier;

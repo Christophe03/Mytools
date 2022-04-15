@@ -1,7 +1,6 @@
 package com.example.MyTools.model;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -31,7 +30,7 @@ public class Notification{
     private Client client;
 
     @Enumerated(EnumType.STRING)
-    private etat Etat = etat.ACTIVER;
+    private com.example.MyTools.model.Etat Etat = com.example.MyTools.model.Etat.ACTIVER;
 
     public Integer getId() {
         return id;
@@ -41,7 +40,7 @@ public class Notification{
         this.id = id;
     }
 
-    public Notification(LocalDate date, String vue, com.example.MyTools.model.vueService vueService, etat etat) {
+    public Notification(LocalDate date, String vue, com.example.MyTools.model.vueService vueService, com.example.MyTools.model.Etat etat) {
         this.date = date;
         this.vue = vue;
         this.vueService = vueService;
@@ -80,11 +79,11 @@ public class Notification{
         this.client = client;
     }
 
-    public etat getEtat() {
+    public com.example.MyTools.model.Etat getEtat() {
         return Etat;
     }
 
-    public void setEtat(etat etat) {
+    public void setEtat(com.example.MyTools.model.Etat etat) {
         Etat = etat;
     }
 

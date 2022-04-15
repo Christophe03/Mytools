@@ -94,4 +94,29 @@ public class AccessoiresServiceImpl implements AccessoiresService {
     public List<Accessoires> accessoiresType(String acce) {
         return this.accessoiresRepository.findByProduits(acce);
     }
+
+    @Override
+    public List<Accessoires> accessoireAteler(Atelier app) {
+        return this.accessoiresRepository.findAllByAtelier(app);
+    }
+
+    @Override
+    public List<Accessoires> listeCobeille() {
+        return this.accessoiresRepository.findByEtat(Etat.DESACTIVER);
+    }
+
+    @Override
+    public void supprimer(Integer id) {
+        Accessoires accessoires = accessoiresRepository.findById(id).get();
+        accessoires.setEtat(Etat.DESACTIVER);
+        accessoiresRepository.save(accessoires);
+
+    }
+
+    @Override
+    public void restore(Integer id) {
+        Accessoires accessoires = accessoiresRepository.findById(id).get();
+        accessoires.setEtat(Etat.ACTIVER);
+        accessoiresRepository.save(accessoires);
+    }
 }

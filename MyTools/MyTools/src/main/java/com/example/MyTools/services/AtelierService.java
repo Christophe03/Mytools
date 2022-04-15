@@ -16,4 +16,8 @@ public interface AtelierService {
     Atelier connexion(String email, String password);
     byte[] recupPhoto(Integer id) throws IOException;
 
+    List<Atelier> listeCorbeille();
+    void supprimer(Integer id);
+    void restore(Integer id);
+
 }

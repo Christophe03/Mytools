@@ -1,6 +1,8 @@
 package com.example.MyTools.services;
 
 import com.example.MyTools.model.Accessoires;
+import com.example.MyTools.model.Appareil;
+import com.example.MyTools.model.Atelier;
 import com.example.MyTools.model.Profils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,5 +18,9 @@ public interface AccessoiresService {
     Accessoires afficherAccrssoiresById(Integer id);
     byte[] recupPhoto(Integer id) throws IOException;
     List<Accessoires> accessoiresType(String acce);
+    List<Accessoires> accessoireAteler(Atelier app);
+    List<Accessoires> listeCobeille();
+    void supprimer(Integer id);
+    void restore(Integer id);
 
 }

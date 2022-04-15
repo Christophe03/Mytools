@@ -48,7 +48,10 @@ export class AjoutArticlePage implements OnInit {
 
         this.servive.addImages(this.appareil.id, this.photo).subscribe(donner =>{
         console.log(donner);
+        ajout.reset();
+        this.ajoute();
         });
+
       });
     }
     if(b.articleType==='ACCESSOIRES'){
@@ -58,20 +61,30 @@ export class AjoutArticlePage implements OnInit {
 
         this.servive.imageAccessoire(this.accessoires.id, this.photo).subscribe(data1 =>{
           console.log(data1);
+          ajout.reset();
+          this.ajoute();
         });
       });
     }
-    this.ajoute();
-    ajout.reset();
   }
   async ajoute(){
     const toast = await this.toastController.create({
       message: 'Article Ajouter avec Success',
-      color: 'success',
+      color: 'primary',
       duration: 3000
     });
     toast.present();
   }
+  async refuse(){
+    const toast = await this.toastController.create({
+      message: 'Ajout Refuser renseigner correctement les information ',
+      color: 'danger',
+      duration: 3000
+    });
+    toast.present();
+
+  }
 }
+
 
 

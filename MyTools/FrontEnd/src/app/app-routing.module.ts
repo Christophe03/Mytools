@@ -19,10 +19,7 @@ const routes: Routes = [
     path: 'ajout-article',
     loadChildren: () => import('./ajout-article/ajout-article.module').then( m => m.AjoutArticlePageModule)
   },
-  {
-    path: 'modifier-article',
-    loadChildren: () => import('./modifier-article/modifier-article.module').then( m => m.ModifierArticlePageModule)
-  },
+
   {
     path: 'inscription',
     loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
@@ -43,10 +40,6 @@ const routes: Routes = [
   {
     path: 'recherche',
     loadChildren: () => import('./recherche/recherche.module').then( m => m.RecherchePageModule)
-  },
-  {
-    path: 'notification',
-    loadChildren: ()=>import('src/app/notification/notification.module').then( res => res.NotificationPageModule)
   },
 
   {
@@ -125,6 +118,31 @@ const routes: Routes = [
     path: 'modifier-accessoire',
     loadChildren: () => import('./modifier-accessoire/modifier-accessoire.module').then( m => m.ModifierAccessoirePageModule)
   },
+  {
+    path: 'mes-accessoire',
+    loadChildren: () => import('./mes-accessoire/mes-accessoire.module').then( m => m.MesAccessoirePageModule)
+  },
+  {
+    path: 'ajout-professionnel',
+    loadChildren: () => import('./ajout-professionnel/ajout-professionnel.module').then( m => m.AjoutProfessionnelPageModule)
+  },
+  {
+    path: 'rendez-vous',
+    loadChildren: () => import('./rendez-vous/rendez-vous.module').then( m => m.RendezVousPageModule)
+  },
+  {
+    path: 'commande-accessoire',
+    loadChildren: () => import('./commande-accessoire/commande-accessoire.module').then( m => m.CommandeAccessoirePageModule)
+  },
+  {
+    path: 'message',
+    loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule)
+  },  {
+    path: 'mes-commandes',
+    loadChildren: () => import('./mes-commandes/mes-commandes.module').then( m => m.MesCommandesPageModule)
+  },
+
+
 
 ];
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { InfosAccessoirePage } from '../infos-accessoire/infos-accessoire.page';
 import { InfosPage } from '../infos/infos.page';
@@ -16,12 +17,16 @@ export class HomePage {
   information: any;
   liste: any;
   liste2: any;
+  messages: any;
+  nbrMessage: any;
   notification: any;
   nbreNotfication:number = 0;
   image: any;
   url= 'http://localhost:8080/mytools/appareil/photo/';
   url1='http://localhost:8080/mytools/accessoire/photo/';
-  constructor(private servive: ServivesAppareilsService, private model: ModalController) { }
+  // url= 'https://mesoutiels.herokuapp.com/mytools/appareil/photo/';
+  // url1='https://mesoutiels.herokuapp.com/mytools/accessoire/photo/';
+  constructor(private servive: ServivesAppareilsService,private router: Router, private model: ModalController) { }
 
   async settings(data: any) {
     console.log(data);
@@ -71,11 +76,22 @@ export class HomePage {
       console.log(this.nbreNotfication);
     })
   }
+  message(){
+    this.servive.getMessage().subscribe((data: any)=>{
+      this.messages = data;
+      console.log(data);
+      this.nbrMessage = this.messages.length;
+      console.log(this.nbrMessage);
+    })
+  }
+
   ngOnInit() {
     this.list();
     this.list2();
     this.notif();
+    this.message();
     this.loginData=JSON.parse(localStorage.getItem('isLogin'));
     console.log(this.loginData);
+
   }
 }

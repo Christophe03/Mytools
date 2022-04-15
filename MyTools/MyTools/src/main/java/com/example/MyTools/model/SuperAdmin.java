@@ -26,11 +26,9 @@ public class SuperAdmin extends AbstractEntity{
     private Integer contact;
 
     @ManyToOne
-    @JoinColumn(name = "idAtilier")
     private Atelier atelier;
 
     @ManyToOne
-    @JoinColumn(name = "idPersonne")
     private Professionnel professionnel;
 
     public SuperAdmin(String nom, String prenom, String email, String password, String genre, Integer contact) {

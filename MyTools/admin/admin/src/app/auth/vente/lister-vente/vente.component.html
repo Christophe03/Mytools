@@ -1,0 +1,92 @@
+<div class="table-scrollable" id="example4" *ngIf="mode==1">
+    <a class="btn btn-sm btn-success mb-2" (click)="test()">Ajouter</a>
+
+    <h2 style="text-align: center;"><strong>Liste des ventes</strong> </h2> <br>
+    <table class="table table-hover table-checkable order-column full-width">
+        <thead>
+            <tr class="a">
+                <th class="center">Id</th>
+                <th class="center">Montant Paye</th>
+                <th class="center"> Montant Restant </th>
+                <th class="center"> Benefice </th>
+               
+
+                <th class="action"> Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="odd gradeX" *ngFor="let item of list">
+
+                <td class="center ">{{item.id}}</td>
+                <td class="center ">{{item.montantPaye}}</td>
+                <td class="center ">{{item.montantRestant}}</td>
+                <td class="center "><SPan *ngIf="item.montantRestant == 0">{{item.benefice}}</SPan></td>
+                
+
+
+
+
+                <td class="center ">
+                   
+                    <i class="fa fa-trash fat" aria-hidden="true" (click)="deleteitem(item.id)"></i>
+                    <i class=" fa fa-info-circle " aria-hidden="true" (click)="toDetail(item.id)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<!-- page Ajouter -->
+<div class="table-scrollable" id="example4" *ngIf="mode==2">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+
+    <form #f="ngForm" (ngSubmit)="saveAcc(f)">
+        <div class="form-group">
+
+            <label for="ventes">Montant_paye</label>
+            <input type="text" name="montantPaye" (ngModel)="montantPaye" class="form-control" id="montant_paye"
+                placeholder="Montant_paye" required>
+
+            <label for="ventes">Montant_restant</label>
+            <input type="text" name="montantRestant" (ngModel)="montantRestant" class="form-control"
+                id="montant_restant" placeholder="Montant_restant" required>
+
+            <label for="ventes">Benefice</label>
+            <input type="text" name="benefice" (ngModel)="benefice" class="form-control" id="benefice"
+                placeholder="Benefice" required>
+
+           
+
+            <button type="submit" id="add-accessoire" class="btn btn-primary">Ajouter</button>
+
+
+        </div>
+    </form>
+</div>
+<!-- page detail -->
+<div class="table-scrollable" id="example4" *ngIf="mode==4">
+    <a class="btn btn-sm btn-primary mb-2" (click)="test1()">Retour</a>
+    <h2 style="text-align: center;"><strong>Page Details</strong> </h2> <br>
+
+    <form #abba="ngForm" (ngSubmit)="savemodif(abba)">
+        <div class="form-group">
+
+            <label for="phone">montantpaye</label>
+            <input type="text" name="montantPaye" disabled [(ngModel)]="getAcce.montantPaye" #montantPaye="ngModel"
+                class="form-control" id="montantPaye" placeholder="Nom" required>
+
+            <label for="ventes">Montant restant</label>
+            <input type="text" name="montantRestant" disabled [(ngModel)]="getAcce.montantRestant" #montantRestant="ngModel"
+                class="form-control" id="montantRestant" placeholder="Montantrestant" required>
+
+            <label for="ventes">Benefice</label>
+            <input type="text" name="benefice" disabled [(ngModel)]="getAcce.benefice" #nom="ngModel" class="form-control"
+                id="benefice" placeholder="Benefice" required>
+
+            <label for="ventes">Total</label>
+            <input type="text" name="total" disabled [(ngModel)]="getAcce.total" #nom="ngModel" class="form-control" id="total"
+                placeholder="Total" required>
+
+        </div>
+    </form>
+    

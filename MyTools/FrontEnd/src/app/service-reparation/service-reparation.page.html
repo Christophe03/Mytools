@@ -1,15 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>serviceReparation</ion-title>
+  <ion-toolbar color="#107B97">
+    <ion-title>Services</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card class="ion-card-list">
-      <ion-item>
-        <ion-icon name="hammer-outline" slot="start"></ion-icon>
-        <ion-label>Card 1 Item</ion-label>
-      </ion-item>
+  <ion-card *ngFor="let l of notification">
+    <ion-img src="{{this.url+l.id}}"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{l.produits}}</ion-card-subtitle>
+      <ion-card-title>{{l.besoinDuService}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>{{l.libelle}}</ion-card-content>
+    <ion-card-content class="rdv">
+      <ion-buttons>
+        <ion-button (click)="settings(l)">Donner un rendez-vous</ion-button>
+      </ion-buttons>
+    </ion-card-content>
   </ion-card>
-
 </ion-content>

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
+
 public class Vente extends AbstractEntity{
 
     private BigDecimal MontantPaye;
@@ -19,12 +19,16 @@ public class Vente extends AbstractEntity{
     private BigDecimal benefice;
     @OneToOne
     private Solution solution;
+    @OneToOne
+    private Commandes commandes;
 
-    public Vente(BigDecimal montantPaye, BigDecimal montantRestant, BigDecimal total, BigDecimal benefice) {
-        this.MontantPaye = montantPaye;
-        this.MontantRestant = montantRestant;
+    public Vente(BigDecimal montantPaye, BigDecimal montantRestant, BigDecimal total, BigDecimal benefice, Solution solution, Commandes commandes) {
+        MontantPaye = montantPaye;
+        MontantRestant = montantRestant;
         this.total = total;
         this.benefice = benefice;
+        this.solution = solution;
+        this.commandes = commandes;
     }
 
     public BigDecimal getMontantPaye() {
@@ -65,5 +69,13 @@ public class Vente extends AbstractEntity{
 
     public void setSolution(Solution solution) {
         this.solution = solution;
+    }
+
+    public Commandes getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(Commandes commandes) {
+        this.commandes = commandes;
     }
 }

@@ -28,7 +28,7 @@ public class ReparationServiceImpl implements ReparationService {
         reparationExistant.setNom(reparation.getNom());
         reparationExistant.setDateDepot(reparation.getDateDepot());
         reparationExistant.setDateRendu(reparation.getDateRendu());
-        reparationExistant.setSolution(reparation.getSolution());
+
     }
 
     @Override

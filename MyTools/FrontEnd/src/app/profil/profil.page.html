@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="#107B97">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
         <img src="../../assets/products/prod-1.png" alt="">
@@ -45,6 +45,10 @@
     <ion-item *ngIf="loginData.profils == 'GERANT' || loginData.profils =='TECHNICIEN' || loginData.profils =='CLIENT'">
       <ion-icon name="call-outline" slot="start"></ion-icon>
       <p>{{loginData.contacts}}</p>
+    </ion-item>
+    <ion-item (click)="logOut()">
+      <ion-icon name="power-outline" slot="start"></ion-icon>
+      <p>Déconnexion</p>
     </ion-item>
   </div>
 </ion-content>

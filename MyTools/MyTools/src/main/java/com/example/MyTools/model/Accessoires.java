@@ -1,6 +1,5 @@
 package com.example.MyTools.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
+
 public class Accessoires extends AbstractEntity{
 
     private String nom;
@@ -25,28 +24,29 @@ public class Accessoires extends AbstractEntity{
     private ArticleType articleType = ArticleType.ACCESSOIRES;
 
     @Enumerated (EnumType.STRING)
-    private etat Etat = etat.ACTIVER;
+    private Etat etat= Etat.ACTIVER;
 
     private String photo;
     
     private Produits produits;
     @OneToMany
     private List<Commandes> commandes;
-    @ManyToOne
-    private Appareil appareils;
     @OneToOne
     private Atelier atelier;
     @OneToOne
     private Professionnel professionnel;
 
-    public Accessoires(String nom, BigDecimal prix, String caracteristique, ArticleType articleType, etat etat, String photo, Produits produits) {
+    public Accessoires(String nom, BigDecimal prix, String caracteristique, ArticleType articleType, Etat etat, String photo, Produits produits, List<Commandes> commandes, Atelier atelier, Professionnel professionnel) {
         this.nom = nom;
         Prix = prix;
         this.caracteristique = caracteristique;
         this.articleType = articleType;
-        Etat = etat;
+        this.etat = etat;
         this.photo = photo;
         this.produits = produits;
+        this.commandes = commandes;
+        this.atelier = atelier;
+        this.professionnel = professionnel;
     }
 
     public String getNom() {
@@ -65,12 +65,28 @@ public class Accessoires extends AbstractEntity{
         Prix = prix;
     }
 
-    public Atelier getAtelier() {
-        return atelier;
+    public String getCaracteristique() {
+        return caracteristique;
     }
 
-    public void setAtelier(Atelier atelier) {
-        this.atelier = atelier;
+    public void setCaracteristique(String caracteristique) {
+        this.caracteristique = caracteristique;
+    }
+
+    public ArticleType getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(ArticleType articleType) {
+        this.articleType = articleType;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     public String getPhoto() {
@@ -81,20 +97,12 @@ public class Accessoires extends AbstractEntity{
         this.photo = photo;
     }
 
-    public Appareil getAppareils() {
-        return appareils;
+    public Produits getProduits() {
+        return produits;
     }
 
-    public void setAppareils(Appareil appareils) {
-        this.appareils = appareils;
-    }
-
-    public etat getEtat() {
-        return Etat;
-    }
-
-    public void setEtat(etat etat) {
-        Etat = etat;
+    public void setProduits(Produits produits) {
+        this.produits = produits;
     }
 
     public List<Commandes> getCommandes() {
@@ -105,28 +113,12 @@ public class Accessoires extends AbstractEntity{
         this.commandes = commandes;
     }
 
-    public String getCaracteristique() {
-        return caracteristique;
+    public Atelier getAtelier() {
+        return atelier;
     }
 
-    public void setCaracteristique(String caracteristique) {
-        this.caracteristique = caracteristique;
-    }
-
-    public Produits getProduits() {
-        return produits;
-    }
-
-    public void setProduits(Produits produits) {
-        this.produits = produits;
-    }
-
-    public ArticleType getArticleType() {
-        return articleType;
-    }
-
-    public void setArticleType(ArticleType articleType) {
-        this.articleType = articleType;
+    public void setAtelier(Atelier atelier) {
+        this.atelier = atelier;
     }
 
     public Professionnel getProfessionnel() {

@@ -82,4 +82,9 @@ public class ProfessionnelServiceImpl implements ProfessionnelService {
         }
         return personne.get();
     }
+
+    @Override
+    public List<Professionnel> professionnelAteler(Atelier app) {
+        return this.professionnelRepository.findAllByAtelier(app);
+    }
 }

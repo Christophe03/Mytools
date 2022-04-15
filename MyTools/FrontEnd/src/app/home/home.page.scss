@@ -1,7 +1,9 @@
 ion-menu-button {
   margin-left: 10px;
 }
-
+ion-toolbar{
+  background-color: #107B97;
+}
 .filter {
   margin-right: 10px;
 }
@@ -110,7 +112,6 @@ ion-menu-button {
   }
 }
 
-// Removing highlight when focused/clicked on product
 ion-slide:focus {
   outline: none !important;
 }
@@ -127,5 +128,13 @@ ion-button[shape=circle] {
   --border-radius: 50%;
   width: 56px;
   height: 56px;
+}
+
+span{
+  color: #ffffff;
+  background-color: crimson;
+  border-radius: 50%;
+  text-align: center;
+  padding: 5px;
 }
 

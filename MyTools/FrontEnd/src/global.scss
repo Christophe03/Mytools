@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.setting-modal {
+  --ion-background-color:#F4F4F4F4;
+  --border-radius: 20px;
+  --max-height: 60%;
+  --max-width: 90%;
+  --width: 90%;
+  --height: 60%;
+  border-width: 5px;
+}

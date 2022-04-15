@@ -37,7 +37,7 @@ public class ServicesServiceImpl implements ServicesService {
         services.setClient(client);
         Notification notification= new Notification();
         notification.setServices(services);
-        notification.setEtat(etat.ACTIVER);
+        notification.setEtat(Etat.ACTIVER);
         notificationRepository.save(notification);
         return this.servicesRepository.save(services);
     }
